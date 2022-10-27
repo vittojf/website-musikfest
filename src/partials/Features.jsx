@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Transition from "../utils/Transition";
 
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 import FeaturesBg from "../images/features-bg.png";
 import FeaturesElement from "../images/features-element.png";
 import { CardGallery } from "../Components";
 import lavaLampImage from "../images/lavalamp.png";
+import { loadSeaAnemonePreset } from "tsparticles-preset-sea-anemone";
 function Features() {
   // const [tab, setTab] = useState(1);
 
@@ -22,16 +25,56 @@ function Features() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [tab]);
 
+  const particlesInit = useCallback(async (engine) => {
+    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadSeaAnemonePreset(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+  }, []);
+
   return (
     <section className="relative pb-10">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
-        className="absolute inset-0 pointer-events-none parallax-bg"
+        className="absolute inset-0 pointer-events-none parallax-bg "
         style={{
           backgroundImage: `url(https://www.wallpaperup.com/uploads/wallpapers/2019/07/19/1330816/120d4a736dfc3cef8f7a66987a55d9ad.jpg)`,
         }}
         aria-hidden="true"
-      ></div>
+      >
+        {" "}
+        <Particles
+          id="tsparticles"
+          className="absolute z-[0] opacity-50 "
+          init={particlesInit}
+          options={{
+            fpsLimit: 120,
+            backgroundMode: {
+              zIndex: 1,
+            },
+            background:{
+                opacity:-1000
+            },
+            particles:{
+
+              move: {
+                
+                speed: 5,
+                
+              },
+            },
+            preset: "seaAnemone",
+    
+            detectRetina: true,
+
+          }
+        }
+        />
+      </div>
       <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-white">
@@ -58,8 +101,8 @@ function Features() {
               title="Artista Principal"
             />
             <CardGallery
-             column="lg:grid-cols-2"
-             columnBreak="grid-cols-1"
+              column="lg:grid-cols-2"
+              columnBreak="grid-cols-1"
               images={[
                 {
                   src: "https://akamai.sscdn.co/uploadfile/letras/fotos/4/2/e/0/42e065d1ca776977723cd5e7ec65a6ad.jpg",
@@ -88,8 +131,6 @@ function Features() {
                 {
                   src: "https://puertoricoposts.com/wp-content/uploads/2022/03/Cori_Antisocial.png",
                   alt: "anuel",
-
-
                 },
                 {
                   src: "https://sfo2.digitaloceanspaces.com/estaticos/var/www/html/wp-content/uploads/2021/06/kj3uevtcjc7licarapwi.jpg",
@@ -98,24 +139,18 @@ function Features() {
                 {
                   src: "https://yt3.ggpht.com/ytc/AMLnZu9xtUsIFbwfz-7dbwxc0Cw_d_ceKftdDgTpWNLNeQ=s900-c-k-c0x00ffffff-no-rj",
                   alt: "anuel",
-          
                 },
                 {
                   src: "https://ultimasnoticias.com.ve/wp-content/uploads/2021/03/Corazon-roto-1.jpg",
                   alt: "anuel",
-         
                 },
                 {
                   src: "https://supertrendy.net/wp-content/uploads/2017/10/aran.jpg",
                   alt: "anuel",
-          
-         
                 },
                 {
                   src: "https://elespectadordecaracas.com/wp-content/uploads/2022/06/Sixto-Rein.jpg",
                   alt: "anuel",
-          
-         
                 },
               ]}
               title="Artista Nacionales"

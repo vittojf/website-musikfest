@@ -7,6 +7,7 @@ import {
 
 import 'aos/dist/aos.css';
 import './css/style.css';
+import './css/style.scss';
 import AOS from 'aos';
 
 import Home from './pages/Home';

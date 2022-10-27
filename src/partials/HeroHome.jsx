@@ -12,11 +12,7 @@ function HeroHome() {
 
       <div className="absolute h-full w-full top-0 ">
         <div className="absolute bg-black h-full w-full"></div>
-        <img
-          src="https://es.rollingstone.com/wp-content/uploads/2022/02/ANUEL-AA-La-Entrevista-ROLLING-STONE-portada.jpg"
-          alt="anuel"
-          className="absolute top-0 h-screen object-cover  lg:h-auto lg:bottom-0 opacity-60 blur-[1px] "
-        />
+    
       </div>
       <div
         className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
