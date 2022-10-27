@@ -22,3 +22,18 @@
 [x-cloak=""] {
     display: none;
 }
+
+.parallax-bg{
+    background-position: center center;
+    transform: translateZ(50px) scale(1);
+    background-size: cover;
+
+    height: auto;
+  }
+  .parallax-content{
+    z-index: -1;
+    transform: translateY(-25vh) translateZ(0px) scale(1);
+    padding-left:30px;
+    padding-right:30px;
+    text-align:center;
+  }
